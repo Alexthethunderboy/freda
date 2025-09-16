@@ -1,0 +1,24 @@
+@import "tailwindcss";
+
+:root {
+  --bg-gradient: linear-gradient(180deg, #FFD6E8 0%, #FFE3A9 100%);
+}
+
+body {
+  font-family: var(--font-poppins), Arial, Helvetica, sans-serif;
+  background: var(--bg-gradient);
+  color: #333333;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.focus-ring {
+  outline: 3px solid #FFD93D;
+  outline-offset: 2px;
+}
