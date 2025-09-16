@@ -10,9 +10,11 @@ import { createPortal } from "react-dom";
 export default function Home() {
   const [modalOpen, setModalOpen] = useState(false);
   const [letter, setLetter] = useState("");
-  const [envelopeData, setEnvelopeData] = useState<any | null>(null);
+  const [envelopeData, setEnvelopeData] = useState<unknown | null>(null);
   const ctaRef = useRef<HTMLButtonElement>(null);
-  const isValidLottie = (data: any) => !!data && ("v" in data) && ("layers" in data || "assets" in data);
+  const isValidLottie = (data: unknown) => {
+    return !!data && typeof data === "object" && "v" in data && ("layers" in data || "assets" in data);
+  };
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -33,7 +35,7 @@ export default function Home() {
       const data = await res.json();
       if (isValidLottie(data)) setEnvelopeData(data);
       else throw new Error("Invalid Lottie JSON structure");
-    } catch (err) {
+    } catch {
       console.warn(
         "Envelope animation missing; showing modal without intro. If you want the intro, add public/assets/Envelope.json"
       );
