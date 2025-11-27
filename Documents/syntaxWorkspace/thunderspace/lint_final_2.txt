@@ -1,0 +1,136 @@
+
+> thunderspace@0.1.0 lint
+> eslint
+
+
+/Users/thunderboy/Documents/syntaxWorkspace/thunderspace/lib/empty-module.js
+  2:1  warning  Assign object to a variable before exporting as module default  import/no-anonymous-default-export
+
+/Users/thunderboy/Documents/syntaxWorkspace/thunderspace/scripts/apply-schema.ts
+  16:7  warning  'supabase' is assigned a value but never used  @typescript-eslint/no-unused-vars
+  21:9  warning  'sql' is assigned a value but never used       @typescript-eslint/no-unused-vars
+
+/Users/thunderboy/Documents/syntaxWorkspace/thunderspace/scripts/seed.ts
+  90:42  warning  'userError' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+/Users/thunderboy/Documents/syntaxWorkspace/thunderspace/src/app/@modal/(.)item/[slug]/page.tsx
+  10:36  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/thunderboy/Documents/syntaxWorkspace/thunderspace/src/app/admin/users/data-table.tsx
+  52:17  warning  Compilation Skipped: Use of incompatible library
+
+This API returns functions which cannot be memoized without leading to stale UI. To prevent this, by default React Compiler will skip memoizing this component/hook. However, you may see issues if values from this API are passed to other components/hooks that are memoized.
+
+/Users/thunderboy/Documents/syntaxWorkspace/thunderspace/src/app/admin/users/data-table.tsx:52:17
+  50 |   const [rowSelection, setRowSelection] = React.useState({});
+  51 |
+> 52 |   const table = useReactTable({
+     |                 ^^^^^^^^^^^^^ TanStack Table's `useReactTable()` API returns functions that cannot be memoized safely
+  53 |     data,
+  54 |     columns,
+  55 |     getCoreRowModel: getCoreRowModel(),  react-hooks/incompatible-library
+
+/Users/thunderboy/Documents/syntaxWorkspace/thunderspace/src/app/forgot-password/page.tsx
+  49:19  error  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+
+/Users/thunderboy/Documents/syntaxWorkspace/thunderspace/src/app/item/[id]/page.tsx
+   74:17  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+  119:25  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+/Users/thunderboy/Documents/syntaxWorkspace/thunderspace/src/app/login/page.tsx
+   45:19  error    Unexpected any. Specify a different type                         @typescript-eslint/no-explicit-any
+   52:9   warning  'handleSignUp' is assigned a value but never used                @typescript-eslint/no-unused-vars
+  139:18  error    `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+
+/Users/thunderboy/Documents/syntaxWorkspace/thunderspace/src/app/profile/page.tsx
+  3:10  warning  'BarChart' is defined but never used  @typescript-eslint/no-unused-vars
+
+/Users/thunderboy/Documents/syntaxWorkspace/thunderspace/src/app/reset-password/page.tsx
+  6:16  warning  'ArrowRight' is defined but never used  @typescript-eslint/no-unused-vars
+
+/Users/thunderboy/Documents/syntaxWorkspace/thunderspace/src/app/search/page.tsx
+  111:41  error  Unexpected any. Specify a different type                         @typescript-eslint/no-explicit-any
+  123:44  error  Unexpected any. Specify a different type                         @typescript-eslint/no-explicit-any
+  128:86  error  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  128:94  error  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+
+/Users/thunderboy/Documents/syntaxWorkspace/thunderspace/src/app/signup/page.tsx
+  16:9   warning  'router' is assigned a value but never used                      @typescript-eslint/no-unused-vars
+  47:15  error    `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+
+/Users/thunderboy/Documents/syntaxWorkspace/thunderspace/src/app/t/[slug]/page.tsx
+  2:10  warning  'client' is defined but never used  @typescript-eslint/no-unused-vars
+  3:10  warning  'groq' is defined but never used    @typescript-eslint/no-unused-vars
+
+/Users/thunderboy/Documents/syntaxWorkspace/thunderspace/src/app/u/[username]/page.tsx
+    2:10  warning  'notFound' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        @typescript-eslint/no-unused-vars
+   68:48  error    Error: Cannot call impure function during render
+
+`Date.now` is an impure function. Calling an impure function can produce unstable results that update unpredictably when the component happens to re-render. (https://react.dev/reference/rules/components-and-hooks-must-be-pure#components-and-hooks-must-be-idempotent).
+
+/Users/thunderboy/Documents/syntaxWorkspace/thunderspace/src/app/u/[username]/page.tsx:68:48
+  66 |   // 3. Fetch Stats (Mocked for now if not in DB)
+  67 |   const stats = {
+> 68 |     joinedYear: new Date(profile.created_at || Date.now()).getFullYear().toString(),
+     |                                                ^^^^^^^^^^ Cannot call impure function
+  69 |     contributions: archives?.length || 0
+  70 |   };
+  71 |                                                                   react-hooks/purity
+   94:30  error    Error: Cannot call impure function during render
+
+`Date.now` is an impure function. Calling an impure function can produce unstable results that update unpredictably when the component happens to re-render. (https://react.dev/reference/rules/components-and-hooks-must-be-pure#components-and-hooks-must-be-idempotent).
+
+/Users/thunderboy/Documents/syntaxWorkspace/thunderspace/src/app/u/[username]/page.tsx:94:30
+  92 |         media_url: null,
+  93 |         topics: ['Philosophy', 'Science'],
+> 94 |         created_at: new Date(Date.now() - 86400000).toISOString(),
+     |                              ^^^^^^^^^^ Cannot call impure function
+  95 |         author_id: profile.id,
+  96 |         author: { username: profile.username, display_name: profile.display_name || profile.username }
+  97 |       },      react-hooks/purity
+  105:30  error    Error: Cannot call impure function during render
+
+`Date.now` is an impure function. Calling an impure function can produce unstable results that update unpredictably when the component happens to re-render. (https://react.dev/reference/rules/components-and-hooks-must-be-pure#components-and-hooks-must-be-idempotent).
+
+/Users/thunderboy/Documents/syntaxWorkspace/thunderspace/src/app/u/[username]/page.tsx:105:30
+  103 |         media_url: null,
+  104 |         topics: ['Art', 'Technology'],
+> 105 |         created_at: new Date(Date.now() - 172800000).toISOString(),
+      |                              ^^^^^^^^^^ Cannot call impure function
+  106 |         author_id: profile.id,
+  107 |         author: { username: profile.username, display_name: profile.display_name || profile.username }
+  108 |       }  react-hooks/purity
+
+/Users/thunderboy/Documents/syntaxWorkspace/thunderspace/src/components/ExploreHeader.tsx
+  40:6  warning  React Hook useEffect has a missing dependency: 'supabase'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+/Users/thunderboy/Documents/syntaxWorkspace/thunderspace/src/components/ItemModal.tsx
+  7:45  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/thunderboy/Documents/syntaxWorkspace/thunderspace/src/components/admin/TopicsManager.tsx
+  6:37  warning  'X' is defined but never used  @typescript-eslint/no-unused-vars
+
+/Users/thunderboy/Documents/syntaxWorkspace/thunderspace/src/components/features/ArchiveCard.tsx
+    3:41  warning  'ImageIcon' is defined but never used                                                                                                                                                                                                                                                    @typescript-eslint/no-unused-vars
+    3:52  warning  'Download' is defined but never used                                                                                                                                                                                                                                                     @typescript-eslint/no-unused-vars
+    5:10  warning  'ThunderCard' is defined but never used                                                                                                                                                                                                                                                  @typescript-eslint/no-unused-vars
+    5:23  warning  'ThunderBadge' is defined but never used                                                                                                                                                                                                                                                 @typescript-eslint/no-unused-vars
+   12:10  warning  'cn' is defined but never used                                                                                                                                                                                                                                                           @typescript-eslint/no-unused-vars
+   97:14  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+  135:60  error    Comments inside children section of tag should be placed inside braces                                                                                                                                                                                                                   react/jsx-no-comment-textnodes
+
+/Users/thunderboy/Documents/syntaxWorkspace/thunderspace/src/components/features/ArchiveTuner.tsx
+   3:28  warning  'useEffect' is defined but never used               @typescript-eslint/no-unused-vars
+  27:10  warning  'isExpanded' is assigned a value but never used     @typescript-eslint/no-unused-vars
+  27:22  warning  'setIsExpanded' is assigned a value but never used  @typescript-eslint/no-unused-vars
+  32:9   warning  'activeSort' is assigned a value but never used     @typescript-eslint/no-unused-vars
+
+/Users/thunderboy/Documents/syntaxWorkspace/thunderspace/src/components/features/AudioPlayer.tsx
+    4:58  warning  'Maximize2' is defined but never used                                                                                                                                                                                                                                                    @typescript-eslint/no-unused-vars
+    4:69  warning  'Minimize2' is defined but never used                                                                                                                                                                                                                                                    @typescript-eslint/no-unused-vars
+    7:10  warning  'cn' is defined but never used                                                                                                                                                                                                                                                           @typescript-eslint/no-unused-vars
+   95:17  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+  180:15  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+✖ 45 problems (14 errors, 31 warnings)
+

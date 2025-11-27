@@ -1,0 +1,145 @@
+@import "tailwindcss";
+
+@plugin "tailwindcss-animate";
+
+@theme {
+  /* Colors - Semantic System */
+  --color-thunder-yellow: #FFC800;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+
+  /* Typography */
+  --font-headings: var(--font-inter);
+  --font-body: var(--font-inter);
+  --font-mono: var(--font-jetbrains-mono);
+
+  /* Animation */
+  --ease-thunder: cubic-bezier(0.4, 0.0, 0.2, 1);
+  --animate-fade-in: fade-in 0.6s var(--ease-thunder);
+  --animate-slide-up: slide-up 0.6s var(--ease-thunder);
+  --animate-unfold: unfold 0.6s var(--ease-thunder);
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes slide-up {
+    from {
+      transform: translateY(20px);
+      opacity: 0;
+    }
+
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes unfold {
+    from {
+      transform: scale(0.98);
+      opacity: 0;
+    }
+
+    to {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+}
+
+:root {
+  /* Light Mode - Soft Beige Paper */
+  --background: #F5F0EB;
+  --foreground: #333333;
+  --card: #F5F0EB;
+  --card-foreground: #333333;
+  --popover: #F5F0EB;
+  --popover-foreground: #333333;
+  --primary: #6A8A6D;
+  --primary-foreground: #FFFFFF;
+  --secondary: #8C735A;
+  --secondary-foreground: #FFFFFF;
+  --muted: #F5F0EB;
+  --muted-foreground: #8C735A;
+  --accent: #EAE0D5;
+  --accent-foreground: #333333;
+  --destructive: #ef4444;
+  --destructive-foreground: #FFFFFF;
+  --border: #E0E0E0;
+  --input: #E0E0E0;
+  --ring: #6A8A6D;
+  --radius: 0.5rem;
+}
+
+.dark {
+  /* Dark Mode - Deep Charcoal Slate */
+  --background: #1A1918;
+  --foreground: #EAE0D5;
+  --card: #242322;
+  --card-foreground: #EAE0D5;
+  --popover: #242322;
+  --popover-foreground: #EAE0D5;
+  --primary: #6A8A6D;
+  --primary-foreground: #FFFFFF;
+  --secondary: #8C735A;
+  --secondary-foreground: #FFFFFF;
+  --muted: #242322;
+  --muted-foreground: #A89F99;
+  --accent: #2A2928;
+  --accent-foreground: #EAE0D5;
+  --destructive: #7f1d1d;
+  --destructive-foreground: #FFFFFF;
+  --border: #3A3938;
+  --input: #3A3938;
+  --ring: #6A8A6D;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-body);
+  transition: background-color 0.5s cubic-bezier(0.4, 0.0, 0.2, 1), color 0.5s cubic-bezier(0.4, 0.0, 0.2, 1);
+
+}
+
+/* Noise Texture */
+.bg-noise {
+  position: relative;
+}
+
+.bg-noise::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 50;
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  mix-blend-mode: overlay;
+}
+
+.dark .bg-noise::before {
+  opacity: 0.06;
+  mix-blend-mode: overlay;
+}
+
+.mask-gradient-right {
+  mask-image: linear-gradient(to right, black 85%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, black 85%, transparent 100%);
+}
