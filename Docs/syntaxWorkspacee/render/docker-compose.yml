@@ -1,0 +1,63 @@
+version: '3.8'
+
+services:
+  redis:
+    image: redis:alpine
+    ports:
+      - "6379:6379"
+    networks:
+      - renderforge-net
+    healthcheck:
+      test: [ "CMD", "redis-cli", "ping" ]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
+  api:
+    build:
+      context: ./apps/api
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+    depends_on:
+      redis:
+        condition: service_healthy
+    volumes:
+      - ./apps/api/src:/app/src
+    networks:
+      - renderforge-net
+    healthcheck:
+      test: [ "CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:3000/health" ]
+      interval: 30s
+      timeout: 3s
+      retries: 3
+
+  worker:
+    build:
+      context: ./apps/worker
+      dockerfile: Dockerfile
+    environment:
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - API_URL=http://api:3000
+    depends_on:
+      - redis
+      - api
+    # Mount a volume for local development hot-reload if needed, 
+    # though for worker it's often better to rebuild or use nodemon in container
+    volumes:
+      - ./apps/worker/src:/app/src
+    networks:
+      - renderforge-net
+    # Security options for Puppeteer
+    security_opt:
+      - seccomp=unconfined
+    cap_add:
+      - SYS_ADMIN
+
+networks:
+  renderforge-net:
+    driver: bridge
