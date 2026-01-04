@@ -4,6 +4,11 @@ import { MindMap } from "@/components/ui/MindMap";
 import { DigitalGarden } from "@/components/library/DigitalGarden";
 import { SynthesisSpotlight } from "@/components/library/SynthesisSpotlight";
 
+export const metadata = {
+  title: "Library of Thought | Knowledge Graph",
+  description: "A decentralized repository of synthesis, research fragments, and evolving ideas.",
+};
+
 export default function LibraryPage() {
   return (
     <div className="min-h-screen bg-[#000510] selection:bg-electric-storm/30">

@@ -7,6 +7,11 @@ import { DMNVisualizer } from "@/components/psychonaut/DMNVisualizer";
 import { KnowledgeTicker } from "@/components/psychonaut/KnowledgeTicker";
 import { TripSitter } from "@/components/psychonaut/TripSitter";
 
+export const metadata = {
+  title: "Psychonaut Corner | Consciousness Research",
+  description: "Exploring the intersection of biological science and consciousness archaeology.",
+};
+
 export default function PsychonautPage() {
   return (
     <div className="min-h-screen bg-black text-white selection:bg-green-500/30">

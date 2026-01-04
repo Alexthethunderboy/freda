@@ -18,11 +18,6 @@ export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
   const code = searchParams.get('code');
   
-  console.log('--- SPOTIFY DEBUG ---');
-  console.log('Request URL:', request.url);
-  console.log('Redirect URI configured:', REDIRECT_URI);
-  console.log('---------------------');
-
   // Step 1: Redirect to Spotify Login
   if (!code) {
     if (!SPOTIFY_CLIENT_ID) {

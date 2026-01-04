@@ -4,6 +4,11 @@ import { JournalSection } from "@/components/unlearn/JournalSection";
 import { ParadigmShifter } from "@/components/unlearn/ParadigmShifter";
 import { ActivistLedger } from "@/components/unlearn/ActivistLedger";
 
+export const metadata = {
+  title: "Unlearn Naija | The ThunderSpace",
+  description: "Dismantling paradigms and rethinking our shared history.",
+};
+
 export default function UnlearnPage() {
   return (
     <div className="max-w-5xl mx-auto px-4 pb-20">
